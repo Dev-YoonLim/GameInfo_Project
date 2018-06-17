@@ -7,24 +7,56 @@
 //
 
 import UIKit
-
-class EntSearchController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-    
+import AVFoundation
+import Speech
+class EntSearchController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
+    var audioPlayer: AVAudioPlayer?
+    var audioRecorder: AVAudioRecorder?
     var url : String = "http://www.grac.or.kr/WebService/GameSearchSvc.asmx/game?gametitle=&"
-    var segueurl : String = "&display=1000&pageno=1&rateno="
+    var segueurl : String = "&display=1000&pageno=&rateno="
     
     var entname = " "
     var entname_utf8 = " "
+    var RecordCount = 0
+    
+    var audioController: AudioController
+    required init?(coder aDecoder: NSCoder){
+        audioController = AudioController()
+        audioController.preloadAudioEffects(audioFileNames: AudioEffectFiles)
+        
+        super.init(coder: aDecoder)
+    }
     
     @IBAction func cancle2ToTextFieldController(segue: UIStoryboardSegue){
         
     }
-    
-    
+    @IBOutlet weak var Record: UIButton!
+    @IBAction func RecordAudio(_ sender: Any) {
+        audioController.playerEffect(name: Drill)
+        if RecordCount == 0{
+            audioRecorder?.record()
+            RecordCount = 1
+        }
+        else if RecordCount == 1{
+            audioRecorder?.stop()
+            RecordCount = 0
+        }
+    }
+    @IBOutlet weak var transcribeButton: UIButton!
+    @IBAction func transcribeAudio(_ sender: Any){
+        audioController.playerEffect(name: Drill)
+        let recognizer = SFSpeechRecognizer()
+        let request = SFSpeechURLRecognitionRequest(url: (audioRecorder?.url)!)
+        recognizer?.recognitionTask(with: request, resultHandler: {
+            (resut, error) in
+            self.entSearch.text = resut?.bestTranscription.formattedString
+        })
+    }
     @IBOutlet weak var entPick: UIPickerView!
     @IBOutlet weak var entSearch: UITextField!
     @IBOutlet weak var ENTlogo: UIImageView!
     @IBAction func SearchStart(_ sender: Any) {
+        audioController.playerEffect(name: Drill)
         if entname == ""{
             entname = entSearch.text!
         }
@@ -81,6 +113,7 @@ class EntSearchController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        record()
         self.entPick.delegate = self;
         self.entPick.dataSource = self;
         for i in 0..<MAX{
@@ -90,6 +123,57 @@ class EntSearchController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         ENTlogo.image = imageArray[0]
 
         // Do any additional setup after loading the view.
+        entSearch.delegate = self
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_sender:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_sender:)), name: .UIKeyboardWillHide, object: nil)
+    }
+    func authorizeSR(){
+        SFSpeechRecognizer.requestAuthorization{ authStatus in
+            OperationQueue.main.addOperation {
+                switch authStatus{
+                case .authorized:
+                    self.transcribeButton.isEnabled = true
+                case .denied:
+                    self.transcribeButton.isEnabled = false
+                    self.Record.setTitle("Speech recognition access denied by user", for: .disabled)
+                case .restricted:
+                    self.transcribeButton.isEnabled = false
+                    self.transcribeButton.setTitle("Speech recognition access restricted on device", for: .disabled)
+                case .notDetermined:
+                    self.transcribeButton.isEnabled = false
+                    self.transcribeButton.setTitle("Speech recognition not authorized", for: .disabled)
+                }
+            }
+        }
+    }
+    func record(){
+        let fileMgr = FileManager.default
+        let dirParhs = fileMgr.urls(for: .documentDirectory, in: .userDomainMask)
+        let soundFileURL = dirParhs[0].appendingPathComponent("sound.caf")
+        let recordSettings = [AVEncoderAudioQualityKey: AVAudioQuality.min.rawValue, AVEncoderBitRateKey: 16, AVNumberOfChannelsKey: 2, AVSampleRateKey: 44100.0] as [String : Any]
+        let audioSession = AVAudioSession.sharedInstance()
+        do{
+            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
+        }catch let error as NSError {
+            print("audioSession error: \(error.localizedDescription)")
+        }
+        do {
+            try audioRecorder = AVAudioRecorder(url: soundFileURL, settings: recordSettings as [String : AnyObject])
+            audioRecorder?.prepareToRecord()
+        }catch let error as NSError{
+            print("audioSession error: \(error.localizedDescription)")
+        }
+        authorizeSR()
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    @objc func keyboardWillShow(_sender: Notification){
+        self.view.frame.origin.y -= 150
+    }
+    @objc func keyboardWillHide(_sender: Notification){
+        self.view.frame.origin.y = 0
     }
 
     override func didReceiveMemoryWarning() {

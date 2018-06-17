@@ -49,6 +49,10 @@
 		37D3BB9520C85E3A00C267FF /* DetailSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3BB9420C85E3A00C267FF /* DetailSearchController.swift */; };
 		37D3BB9720C9BFAE00C267FF /* DetailResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3BB9620C9BFAE00C267FF /* DetailResultController.swift */; };
 		37D3BB9B20CD994F00C267FF /* LastDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3BB9A20CD994F00C267FF /* LastDetailController.swift */; };
+		37D3BB9D20D674ED00C267FF /* GotyResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3BB9C20D674ED00C267FF /* GotyResultController.swift */; };
+		37FB486D20D708A60089C08A /* Switch.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37FB486C20D708A60089C08A /* Switch.mp3 */; };
+		37FB48D420D70BC30089C08A /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FB48D320D70BC30089C08A /* AudioController.swift */; };
+		37FB48D620D70BCA0089C08A /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FB48D520D70BCA0089C08A /* Config.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +100,10 @@
 		37D3BB9420C85E3A00C267FF /* DetailSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailSearchController.swift; path = "../../../../.Trash/project/Game? Info?/Game? Info?/DetailSearchController.swift"; sourceTree = "<group>"; };
 		37D3BB9620C9BFAE00C267FF /* DetailResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailResultController.swift; sourceTree = "<group>"; };
 		37D3BB9A20CD994F00C267FF /* LastDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastDetailController.swift; sourceTree = "<group>"; };
+		37D3BB9C20D674ED00C267FF /* GotyResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotyResultController.swift; sourceTree = "<group>"; };
+		37FB486C20D708A60089C08A /* Switch.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Switch.mp3; sourceTree = "<group>"; };
+		37FB48D320D70BC30089C08A /* AudioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
+		37FB48D520D70BCA0089C08A /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +120,7 @@
 		37C020B220AACC8800352220 = {
 			isa = PBXGroup;
 			children = (
+				37FB48D220D708DB0089C08A /* Audio */,
 				37D3BB1320BB63BB00C267FF /* titlelogo */,
 				37D3BAE720BB4EF900C267FF /* gamelogo */,
 				37D3BAD820BB2FCC00C267FF /* Logo */,
@@ -131,6 +140,8 @@
 		37C020BD20AACC8800352220 /* Game? Info? */ = {
 			isa = PBXGroup;
 			children = (
+				37FB48D520D70BCA0089C08A /* Config.swift */,
+				37FB48D320D70BC30089C08A /* AudioController.swift */,
 				37C020BE20AACC8800352220 /* AppDelegate.swift */,
 				37C020C020AACC8900352220 /* ViewController.swift */,
 				37C020C220AACC8900352220 /* Main.storyboard */,
@@ -143,6 +154,7 @@
 				37D3BAD320BB271900C267FF /* GotySearchController.swift */,
 				37D3BACD20BADD6500C267FF /* GameNameResultController.swift */,
 				37D3BB9020C4E3E000C267FF /* CompanyNameResultController.swift */,
+				37D3BB9C20D674ED00C267FF /* GotyResultController.swift */,
 				37D3BB9620C9BFAE00C267FF /* DetailResultController.swift */,
 				37D3BB9A20CD994F00C267FF /* LastDetailController.swift */,
 			);
@@ -197,6 +209,14 @@
 				37D3BB2120BB63BB00C267FF /* 08.png */,
 			);
 			path = titlelogo;
+			sourceTree = "<group>";
+		};
+		37FB48D220D708DB0089C08A /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				37FB486C20D708A60089C08A /* Switch.mp3 */,
+			);
+			path = Audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,6 +289,7 @@
 				37D3BB2420BB63BC00C267FF /* 17.jpg in Resources */,
 				37D3BAE020BB2FCC00C267FF /* nexon.jpg in Resources */,
 				37D3BB2320BB63BC00C267FF /* 15.jpg in Resources */,
+				37FB486D20D708A60089C08A /* Switch.mp3 in Resources */,
 				37D3BB2620BB63BC00C267FF /* 12.jpg in Resources */,
 				37D3BAF420BB4EF900C267FF /* 그림6.png in Resources */,
 				37D3BB2B20BB63BC00C267FF /* 11.jpg in Resources */,
@@ -305,9 +326,12 @@
 				37D3BB9720C9BFAE00C267FF /* DetailResultController.swift in Sources */,
 				37D3BAD220BB209D00C267FF /* EntSearchController.swift in Sources */,
 				37D3BB9520C85E3A00C267FF /* DetailSearchController.swift in Sources */,
+				37FB48D620D70BCA0089C08A /* Config.swift in Sources */,
 				37D3BAD420BB271900C267FF /* GotySearchController.swift in Sources */,
+				37D3BB9D20D674ED00C267FF /* GotyResultController.swift in Sources */,
 				37D3BB9120C4E3E000C267FF /* CompanyNameResultController.swift in Sources */,
 				37D3BB9B20CD994F00C267FF /* LastDetailController.swift in Sources */,
+				37FB48D420D70BC30089C08A /* AudioController.swift in Sources */,
 				37D3BACE20BADD6500C267FF /* GameNameResultController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

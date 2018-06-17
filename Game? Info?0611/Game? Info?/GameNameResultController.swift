@@ -20,7 +20,10 @@ class GameNameResultController: UITableViewController, XMLParserDelegate{
     var titles = NSMutableString()
     var entname = NSMutableString()
     var rateno = NSMutableString()
+    var GameName : String?
     
+    var titlename = ""
+    var titlename_utf8 = ""
     var ratenos = ""
     var ratenos_utf8 = ""
     
@@ -39,10 +42,14 @@ class GameNameResultController: UITableViewController, XMLParserDelegate{
                 let indexPath = tableView.indexPath(for: cell)
                 ratenos = (posts.object(at: (indexPath?.row)!) as AnyObject).value(forKey: "rateno") as! NSString as String
                 ratenos_utf8 = ratenos.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+                titlename = (posts.object(at: (indexPath?.row)!) as AnyObject).value(forKey: "gametitle") as! NSString as String
+                titlename_utf8 = titlename.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
                 
                 if let lastDetailController = segue.destination as?
                     LastDetailController{
                     lastDetailController.url = url! + ratenos_utf8
+                    lastDetailController.gametitles_utf8 = titlename_utf8
+                    lastDetailController.gametitle = titlename as! NSMutableString
                 }
             }
         }

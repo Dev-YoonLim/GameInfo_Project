@@ -22,7 +22,24 @@ class DetailResultController: UITableViewController, XMLParserDelegate {
     var entname = NSMutableString()
     var year = NSMutableString()
     var age = NSMutableString()
+    var rateno = NSMutableString()
+    var CodeNumber = ""
+    var CodeNumber_utf8 = ""
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if segue.identifier == "segueToDetail3"{
+            if let cell = sender as? UITableViewCell{
+                let indexPath = tableView.indexPath(for: cell)
+                CodeNumber = (posts.object(at: (indexPath?.row)!) as AnyObject).value(forKey: "rateno") as! NSString as String
+                CodeNumber_utf8 = (CodeNumber.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)
+                
+                if let lastDetailController = segue.destination as?
+                    LastDetailController{
+                    lastDetailController.url = url! + CodeNumber_utf8
+                }
+            }
+        }
+    }
     
     func beginParsing(){
         posts = []
@@ -47,6 +64,8 @@ class DetailResultController: UITableViewController, XMLParserDelegate {
             year = " "
             age = NSMutableString()
             age = " "
+            rateno = NSMutableString()
+            rateno = ""
         }
     }
     
@@ -63,26 +82,27 @@ class DetailResultController: UITableViewController, XMLParserDelegate {
         else if element.isEqual(to: "rateddate"){
             year.append(string)
         }
+        else if element.isEqual(to: "rateno"){
+            rateno.append(string)
+        }
     }
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?){
         if (elementName as NSString).isEqual(to: "item"){
+            if age as String == d_aname{
                 if !titles.isEqual(nil){
                     elements.setObject(titles, forKey: "gametitle" as NSCopying)
                 }
                 if !entname.isEqual(nil){
                     elements.setObject(entname, forKey: "entname" as NSCopying)
                 }
-                if !age.isEqual(nil){
-                    elements.setObject(age, forKey: "givenrate" as NSCopying)
-                }
-                if !year.isEqual(nil){
-                    elements.setObject(year, forKey: "rateddate" as NSCopying)
+                if !rateno.isEqual(nil){
+                    elements.setObject(rateno, forKey: "rateno" as NSCopying)
                 }
             posts.add(elements)
+            }
         }
-    }
-    
+        }
     override func viewDidLoad() {
         super.viewDidLoad()
         //print(d_pname)

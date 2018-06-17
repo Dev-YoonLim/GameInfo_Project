@@ -10,11 +10,13 @@ import UIKit
 
 class LastDetailController: UITableViewController, XMLParserDelegate {
     @IBOutlet var DtData: UITableView!
+    @IBOutlet weak var GameImage: UIImageView!
+    
     
     var url : String?
     var parser = XMLParser()
     var postname : [String] = ["등급분류기관" ,"게임타이틀", "회사", "신청등급", "결정등급", "등급분류번호", "등급분류일자"]
-    var posts : [String] = ["", "", "", "", "", "", ""]
+    var posts : [String] = ["", "", "", "", "", ""]
     var element = NSString()
     
     var orgname = NSMutableString()
@@ -25,20 +27,48 @@ class LastDetailController: UITableViewController, XMLParserDelegate {
     var rateno = NSMutableString()
     var rateddate = NSMutableString()
     
+    var gametitles : String?
+    var gametitles_utf8 : String?
+    
+    //var url2 : String = "https://openapi.naver.com/v1/search/image.xml?query=" + gametitles_utf8! + "&display=10&start=1&sort=sim"
+    var id = "Dskw0fscEI5FWdv3UgOe"
+    var password = "ERlx5Z5snY"
+    var image = UIImage()
+    
+//    func head(){
+//        let request = NSMutableURLRequest(url : URL(string: "https://openapi.naver.com/v1/search/image.xml?query=" + gametitles_utf8! + "&display=10&start=1&sort=sim")! as URL)
+//        let session = URLSession.shared
+//        request.httpMethod = "GET"
+//        request.addValue("X-Naver-Client-Id", forHTTPHeaderField: "Dskw0fscEI5FWdv3UgOe")
+//        request.addValue("X-Naver-Client-Secret", forHTTPHeaderField: "ERlx5Z5snY")
+//
+//        let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
+//            if error != nil{
+//                print("Error: \(String(describing: error))")
+//            }
+//            else{
+//                print("Response: \(String(describing: response))")
+//            }
+//        })
+//        task.resume()
+//    }
+    
     func beginParsing(){
+        //GameImage.image = image
         print(url)
         posts = []
         parser = XMLParser(contentsOf: (URL(string: url!))!)!
         parser.delegate = self
         parser.parse()
+        
         DtData!.reloadData()
     }
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName : String?, attributes attributeDict: [String : String]){
         element = elementName as NSString
+       
         if (elementName as NSString).isEqual(to: "item"){
             posts = ["", "", "", "", "", "", ""]
-            
             orgname = NSMutableString()
             orgname = ""
             gametitle = NSMutableString()
@@ -54,6 +84,7 @@ class LastDetailController: UITableViewController, XMLParserDelegate {
             rateddate = NSMutableString()
             rateddate = ""
         }
+      
     }
     
     func parser(_ parser: XMLParser, foundCharacters string: String){
@@ -78,6 +109,7 @@ class LastDetailController: UITableViewController, XMLParserDelegate {
         else if element.isEqual(to: "rateddate"){
             rateddate.append(string)
         }
+       
     }
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?){
@@ -104,10 +136,12 @@ class LastDetailController: UITableViewController, XMLParserDelegate {
                 posts[6] = rateddate as String
             }
         }
+       
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //head()
         beginParsing()
         
         // Uncomment the following line to preserve selection between presentations

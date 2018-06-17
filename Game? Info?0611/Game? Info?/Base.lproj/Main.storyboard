@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mq6-xn-W72">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mq6-xn-W72">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -26,6 +26,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="GameS:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ENm-RS-mqm"/>
                                     <segue destination="nJY-Av-g2S" kind="show" id="qFF-3J-IRn"/>
                                 </connections>
                             </button>
@@ -37,6 +38,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="EntS:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dvq-L3-Y74"/>
                                     <segue destination="LAJ-j4-3tb" kind="show" id="tz9-yX-xTo"/>
                                 </connections>
                             </button>
@@ -48,6 +50,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="GOtyS:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ugq-MX-Rxr"/>
                                     <segue destination="Iwt-ID-MCD" kind="show" id="o0t-l2-K5v"/>
                                 </connections>
                             </button>
@@ -59,6 +62,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="DetailS:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SyJ-nm-eBg"/>
                                     <segue destination="ek2-IO-906" kind="show" id="tFx-Sa-iOi"/>
                                 </connections>
                             </button>
@@ -126,6 +130,22 @@
                                     <segue destination="d57-RP-aAQ" kind="show" identifier="segue2ToTableView" id="gDk-ax-aib"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ggj-F1-ieL">
+                                <rect key="frame" x="310" y="595" width="35" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="변환"/>
+                                <connections>
+                                    <action selector="transcribeAudio:" destination="LAJ-j4-3tb" eventType="touchUpInside" id="KJv-CQ-COD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Rr-hc-D4a">
+                                <rect key="frame" x="310" y="536" width="35" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="음성"/>
+                                <connections>
+                                    <action selector="RecordAudio:" destination="LAJ-j4-3tb" eventType="touchUpInside" id="CRq-69-KDK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -135,31 +155,37 @@
                             <constraint firstItem="aGM-9E-mPK" firstAttribute="centerX" secondItem="LGh-MK-HgN" secondAttribute="centerX" id="5sm-Sp-3QC"/>
                             <constraint firstItem="ixg-T3-yqC" firstAttribute="trailing" secondItem="LA0-3p-drB" secondAttribute="trailing" constant="130" id="9cz-P8-ZI5"/>
                             <constraint firstItem="aGM-9E-mPK" firstAttribute="top" secondItem="RbO-os-KHw" secondAttribute="bottom" constant="8" id="JI5-p6-U7m"/>
+                            <constraint firstItem="ixg-T3-yqC" firstAttribute="trailing" secondItem="Ggj-F1-ieL" secondAttribute="trailing" constant="30" id="JZx-CZ-gDT"/>
                             <constraint firstItem="LA0-3p-drB" firstAttribute="centerX" secondItem="LGh-MK-HgN" secondAttribute="centerX" id="Pnh-cF-puT"/>
                             <constraint firstItem="RbO-os-KHw" firstAttribute="top" secondItem="ixg-T3-yqC" secondAttribute="top" constant="52" id="SqC-cN-Tg6"/>
                             <constraint firstItem="LA0-3p-drB" firstAttribute="leading" secondItem="ixg-T3-yqC" secondAttribute="leading" constant="130" id="amp-om-dxJ"/>
+                            <constraint firstItem="3Rr-hc-D4a" firstAttribute="top" secondItem="aGM-9E-mPK" secondAttribute="bottom" constant="46" id="c2f-bW-qwV"/>
+                            <constraint firstItem="3Rr-hc-D4a" firstAttribute="leading" secondItem="LA0-3p-drB" secondAttribute="trailing" constant="65" id="dWu-98-WJ6"/>
                             <constraint firstItem="RbO-os-KHw" firstAttribute="centerX" secondItem="LGh-MK-HgN" secondAttribute="centerX" id="gry-xD-zAV"/>
                             <constraint firstItem="LA0-3p-drB" firstAttribute="top" secondItem="fBW-JW-qfn" secondAttribute="bottom" constant="8" id="hHy-0C-qnZ"/>
                             <constraint firstItem="ixg-T3-yqC" firstAttribute="trailing" secondItem="fBW-JW-qfn" secondAttribute="trailing" constant="100" id="nxB-HB-6n0"/>
                             <constraint firstItem="fBW-JW-qfn" firstAttribute="centerX" secondItem="LGh-MK-HgN" secondAttribute="centerX" id="vjB-li-7jK"/>
+                            <constraint firstItem="Ggj-F1-ieL" firstAttribute="top" secondItem="3Rr-hc-D4a" secondAttribute="bottom" constant="23" id="xXa-JC-dfo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ixg-T3-yqC"/>
                     </view>
                     <navigationItem key="navigationItem" id="ihb-AP-KTZ"/>
                     <connections>
                         <outlet property="ENTlogo" destination="RbO-os-KHw" id="Ndr-3Q-LLV"/>
+                        <outlet property="Record" destination="3Rr-hc-D4a" id="Beu-cp-nxw"/>
                         <outlet property="entPick" destination="aGM-9E-mPK" id="9KC-La-W7K"/>
                         <outlet property="entSearch" destination="fBW-JW-qfn" id="zPO-Fi-i2V"/>
+                        <outlet property="transcribeButton" destination="Ggj-F1-ieL" id="4N9-tK-Qpv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WrL-9J-uWV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3815.1999999999998" y="-114.69265367316342"/>
         </scene>
-        <!--Goty Search Controller-->
+        <!--고티검색-->
         <scene sceneID="CiC-li-KI6">
             <objects>
-                <viewController id="Iwt-ID-MCD" customClass="GotySearchController" customModule="Game__Info_" sceneMemberID="viewController">
+                <viewController title="고티검색" id="Iwt-ID-MCD" customClass="GotySearchController" customModule="Game__Info_" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xap-He-QBG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -169,7 +195,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="검색"/>
                                 <connections>
-                                    <segue destination="3tB-Vn-4Xm" kind="show" identifier="segueToTable" id="vIl-N6-qbh"/>
+                                    <action selector="Gos:" destination="Iwt-ID-MCD" eventType="touchUpInside" id="fHf-IE-Byj"/>
+                                    <segue destination="3tB-Vn-4Xm" kind="show" identifier="segue4ToTableView" id="vIl-N6-qbh"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="06.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="afR-bg-Una">
@@ -206,16 +233,16 @@
             </objects>
             <point key="canvasLocation" x="3813.5999999999999" y="598.65067466266873"/>
         </scene>
-        <!--고티검색-->
+        <!--고티검색결과-->
         <scene sceneID="uFO-FJ-zLn">
             <objects>
-                <tableViewController title="고티검색" id="9Gh-bJ-MV6" sceneMemberID="viewController">
+                <tableViewController title="고티검색결과" id="9Gh-bJ-MV6" customClass="GotyResultController" customModule="Game__Info_" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Jpp-ne-KTg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="P3i-Ks-NjD" detailTextLabel="oMg-TT-jIF" style="IBUITableViewCellStyleSubtitle" id="lha-bA-RNm">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="P3i-Ks-NjD" detailTextLabel="oMg-TT-jIF" style="IBUITableViewCellStyleSubtitle" id="lha-bA-RNm">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lha-bA-RNm" id="vcr-Ac-ZTT">
@@ -238,9 +265,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="YA7-Zg-Wjh" kind="show" id="tTF-fb-MOc"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -251,7 +275,7 @@
                     <navigationItem key="navigationItem" id="Jsu-Nx-GvN">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="TjV-dC-4gv">
                             <connections>
-                                <segue destination="kG1-Mx-8Sh" kind="unwind" unwindAction="cancle3ToTextFieldControllerWithSegue:" id="MLJ-Co-X0h"/>
+                                <segue destination="kG1-Mx-8Sh" kind="unwind" unwindAction="cancle4ToTextFieldControllerWithSegue:" id="MLJ-Co-X0h"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -299,7 +323,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="등록 년도 입력" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HvH-Ck-TQZ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="등급 분류 번호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HvH-Ck-TQZ">
                                 <rect key="frame" x="138.5" y="337" width="97.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -363,7 +387,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uij-qI-k5r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3360.8000000000002" y="1290.4047976011996"/>
+            <point key="canvasLocation" x="3814" y="1291"/>
         </scene>
         <!--상세검색결과-->
         <scene sceneID="iBN-KB-lUe">
@@ -452,17 +476,37 @@
                                     <segue destination="a1N-5A-L7L" kind="show" identifier="segueToTableView" id="Y96-ys-JxM"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2NR-8f-FrW">
+                                <rect key="frame" x="285" y="525" width="35" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="음성"/>
+                                <connections>
+                                    <action selector="RecordAudio:" destination="nJY-Av-g2S" eventType="touchUpInside" id="Kej-T2-MM1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVI-BY-i8B">
+                                <rect key="frame" x="287" y="582" width="35" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="변환"/>
+                                <connections>
+                                    <action selector="transcribeAudio:" destination="nJY-Av-g2S" eventType="touchUpInside" id="85Y-TV-jOW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="3lJ-ZT-N61" firstAttribute="leading" secondItem="Jwt-of-VZh" secondAttribute="leading" constant="50" id="7AH-jb-u2G"/>
+                            <constraint firstItem="eVI-BY-i8B" firstAttribute="top" secondItem="2NR-8f-FrW" secondAttribute="bottom" constant="21" id="AaF-43-2WU"/>
                             <constraint firstItem="Jwt-of-VZh" firstAttribute="trailing" secondItem="03p-wg-uhj" secondAttribute="trailing" constant="130" id="GqT-xu-xHc"/>
                             <constraint firstItem="3lJ-ZT-N61" firstAttribute="centerX" secondItem="iwv-7A-Swy" secondAttribute="centerX" id="Hvu-Hd-pei"/>
+                            <constraint firstItem="2NR-8f-FrW" firstAttribute="leading" secondItem="03p-wg-uhj" secondAttribute="trailing" constant="40" id="K35-1P-3aq"/>
                             <constraint firstItem="03p-wg-uhj" firstAttribute="top" secondItem="3lJ-ZT-N61" secondAttribute="bottom" constant="25" id="OVA-df-7te"/>
                             <constraint firstItem="03p-wg-uhj" firstAttribute="leading" secondItem="Jwt-of-VZh" secondAttribute="leading" constant="130" id="Sco-c0-gUS"/>
                             <constraint firstItem="3lJ-ZT-N61" firstAttribute="top" secondItem="tTw-do-XKA" secondAttribute="bottom" constant="144" id="YQS-Lr-bct"/>
+                            <constraint firstItem="Jwt-of-VZh" firstAttribute="trailing" secondItem="eVI-BY-i8B" secondAttribute="trailing" constant="53" id="gqw-Lo-wOj"/>
                             <constraint firstItem="tTw-do-XKA" firstAttribute="top" secondItem="Jwt-of-VZh" secondAttribute="top" constant="65" id="hTg-UP-H1T"/>
                             <constraint firstItem="Jwt-of-VZh" firstAttribute="trailing" secondItem="3lJ-ZT-N61" secondAttribute="trailing" constant="50" id="oGv-8o-RSX"/>
+                            <constraint firstItem="2NR-8f-FrW" firstAttribute="top" secondItem="3lJ-ZT-N61" secondAttribute="bottom" constant="24" id="sKb-0h-NiM"/>
                             <constraint firstItem="tTw-do-XKA" firstAttribute="centerX" secondItem="iwv-7A-Swy" secondAttribute="centerX" id="vsR-Df-49N"/>
                             <constraint firstItem="03p-wg-uhj" firstAttribute="centerX" secondItem="iwv-7A-Swy" secondAttribute="centerX" id="wZb-NE-3bU"/>
                         </constraints>
@@ -471,7 +515,9 @@
                     <navigationItem key="navigationItem" id="ts1-Ck-jNp"/>
                     <connections>
                         <outlet property="GameSearch" destination="3lJ-ZT-N61" id="B3K-Dp-ihd"/>
+                        <outlet property="Record" destination="2NR-8f-FrW" id="qZy-tf-JBG"/>
                         <outlet property="logo" destination="tTw-do-XKA" id="0hN-ft-jOX"/>
+                        <outlet property="transcribeButton" destination="eVI-BY-i8B" id="J4a-9R-MMJ"/>
                     </connections>
                 </viewController>
                 <exit id="it3-37-7TV" userLabel="Exit" sceneMemberID="exit"/>
@@ -640,6 +686,7 @@
                     </tableView>
                     <connections>
                         <outlet property="DtData" destination="eVN-1p-Scc" id="CNb-2L-waG"/>
+                        <outlet property="GameImage" destination="y1h-JT-P6a" id="cYx-tk-1Jl"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ijj-gg-yRz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -744,6 +791,6 @@
         <image name="그림5.png" width="300" height="198"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Cmy-rE-k8l"/>
+        <segue reference="o48-8J-eUI"/>
     </inferredMetricsTieBreakers>
 </document>
